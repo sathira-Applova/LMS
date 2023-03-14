@@ -1,41 +1,69 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: sathira
-  Date: 09/03/2023
-  Time: 16:17
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="org.userwebapp.model.Book" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <html>
+
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta charset="UTF-8">
   <title>Welcome</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .centerBtn {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    .buttonArrangement {
+      display: flex;
+      justify-content:center;
+      padding: 5px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3e8e41;
+    }
+  </style>
 </head>
-
-<style>
-  .centerBtn {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-  .buttonArrangement{
-    display: flex;
-    justify-content:center;
-    padding:5px;
-  }
-
-</style>
 
 <body>
 <h3 style="text-align: center">Library Management System</h3>
 
 <div class="centerBtn">
-  <button type="button"><a href="#">Login</a></button> <%-- this have have login --%>
-
-  <button type="button"><a href="#">Register</a></button> <%-- this have have register --%>
+  <button type="button"><a href="regForm">Register</a></button>
+  <button type="button"><a href="#">Login</a></button>
 </div>
 
-<table border="1" align="center" style="width: 70%; text-align: center">
+<table>
   <tr>
     <th>Book ID</th>
     <th>Name</th>
@@ -44,15 +72,12 @@
 
   <c:forEach var="book" items="${bookList}">
     <tr>
-      <td>${book.getBookID()} </td>
-      <td>${book.getbName} </td>
-      <td>${book.getNoOfCopies()} </td>
-      <td colspan="2">
-      </td>
+      <td>${book.getBookID()}</td>
+      <td>${book.getbName()}</td>
+      <td>${book.getNoOfCopies()}</td>
     </tr>
   </c:forEach>
-
 </table>
-
 </body>
+
 </html>
