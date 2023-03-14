@@ -5,18 +5,17 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.userwebapp.model.User;
 
+import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
 public class UserDAOI implements UserDAO{
-
     private JdbcTemplate jdbcTemplate;
-
-//    public UserDAOI(){
-//        DataSource ds = getDataSource();
-//    }
-
+    public UserDAOI(){
+        DataSource ds = BooksDAOI.getDataSource();
+        jdbcTemplate = new JdbcTemplate(ds);
+    }
 
     @Override
     public int create(User user) {
